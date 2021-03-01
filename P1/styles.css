@@ -1,5 +1,6 @@
 html {
-    background-image: url("fondo.jpg");
+    background-image: url("fondo2.jpg");
+    background-size: cover;
 }
 
 h1 {
