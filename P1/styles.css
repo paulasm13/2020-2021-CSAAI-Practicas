@@ -15,9 +15,10 @@ h1 {
     background-color: honeydew;
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
-    width: 300px;
+    width: 735px;
+    height: 500px;
     border: 15px solid green;
-    padding: 50px;
+    padding: 65px;
     margin: 20px;
 }
 
