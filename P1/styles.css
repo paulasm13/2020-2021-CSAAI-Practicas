@@ -3,7 +3,7 @@ html {
 }
 
 h1 {
-    border: 3px solid black;
+    border: 3px solid beige;
     color: black;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
@@ -17,13 +17,13 @@ h1 {
     font-family: 'Courier New', Courier, monospace;
     width: 735px;
     height: 300px;
-    border: 15px solid green;
+    border: 2px solid beige;
     padding: 65px;
     margin: 20px;
 }
 
 p {
-    border: 3px solid black;
+    border: 2px solid beige;
     color: black;
     background-color: honeydew;
     font-family: 'Courier New', Courier, monospace;
