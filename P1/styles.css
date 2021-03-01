@@ -3,8 +3,7 @@ html {
 }
 
 h1 {
-    border: solid;
-    border-color: bl;
+    border: 3px solid black;
     color: black;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
@@ -12,8 +11,7 @@ h1 {
 }
 
 .container{
-    border: solid;
-    border-color: black;
+    border: 3px solid black;
     color: black;
     background-color: beige;
     text-align: center;
@@ -21,8 +19,7 @@ h1 {
 }
 
 p {
-    border: solid;
-    border-color: black;
+    border: 3px solid black;
     color: gray;
     background-color: honeydew;
     font-family: 'Courier New', Courier, monospace;
