@@ -11,16 +11,19 @@ h1 {
 }
 
 .container{
-    border: 3px solid black;
     color: black;
-    background-color: beige;
+    background-color: honeydew;
     text-align: center;
     font-family: 'Courier New', Courier, monospace;
+    width: 300px;
+    border: 15px solid green;
+    padding: 50px;
+    margin: 20px;
 }
 
 p {
     border: 3px solid black;
-    color: gray;
+    color: black;
     background-color: honeydew;
     font-family: 'Courier New', Courier, monospace;
 }
