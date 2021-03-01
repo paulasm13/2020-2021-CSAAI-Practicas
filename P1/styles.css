@@ -1,11 +1,24 @@
 html {
-    background-image: url("fondo.jpg")  
+    background-image: url("fondo.jpg");
+    background-size: cover;
 }
 
 h1 {
-    color: bisque;
+    color: black;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bold;
+}
+
+.recuadros{
+    border: 30px black;
+    color: black;
+    background-color: beige;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 p {
-    color:coral;
+    color: gray;
+    background-color: honeydew;
+    font-family: 'Courier New', Courier, monospace;
 }
