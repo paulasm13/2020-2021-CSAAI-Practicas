@@ -45,6 +45,7 @@ h1 {
 }
 
 .imagen{
+    float: inherit;
     width:300px;
     height:300px;
     border-radius:150px;
