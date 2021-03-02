@@ -7,6 +7,8 @@ h1 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     font-weight: bold;
     text-align: center;
+    background-color: honeydew;
+    border-radius: 10px;
     
 }
 
