@@ -26,6 +26,8 @@ h1 {
     border: 2px solid honeydew;
     height: 650px;
     width: 850px;
+    padding: 3px;      
+    margin: 3px;
 }
 
 .minicontainer{
@@ -38,6 +40,8 @@ h1 {
     border: 2px solid honeydew;
     height: 650px;
     width: 350px;
+    padding: 3px;      
+    margin: 3px;
 }
 
 p {
