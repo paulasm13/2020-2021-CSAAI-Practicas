@@ -3,7 +3,6 @@ html {
 }
 
 h1 {
-    border: 3px solid beige;
     color: black;
     font-family: 'Courier New', Courier, monospace;
     font-weight: bold;
@@ -11,27 +10,27 @@ h1 {
 }
 
 .container{
-    float: left;
+    float: right;
+    background-color: rgba(120, 200, 250, 0.5);
     color: black;
-    background-color: honeydew;
     text-align: left;
     font-family: 'Courier New', Courier, monospace;
     width: 700px;
-    height: 300px;
-    border: 2px solid beige;
+    height: 900px;
+    border: 2px double rgb(6, 30, 107);
     padding: 65px;
     margin: 20px;
 }
 
 .minicontainer{
-    float: right;
+    float: left;
     color: black;
-    background-color: honeydew;
-    text-align: right;
+    background-color:  rgba(120, 200, 250, 0.5);
+    text-align: left;
     font-family: 'Courier New', Courier, monospace;
-    width: 300px;
-    height: 300px;
-    border: 2px solid beige;
+    width: 500px;
+    height: 900px;
+    border: 2px double rgb(6, 30, 107);
 }
 
 p {
