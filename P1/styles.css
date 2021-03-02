@@ -15,8 +15,8 @@ h1 {
     color: black;
     text-align: left;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
-    width: 900px;
-    height: 500px;
+    width: 700px;
+    height: 550px;
     border-radius: 10px;
     padding: 20px;
     margin: 20px;
@@ -28,8 +28,8 @@ h1 {
     background-color:  rgba(233, 165, 77, 0.5);
     text-align: left;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
-    width: 450px;
-    height: 500px;
+    height: 550px;
+    width: 200px;
     border-radius: 10px;
     padding: 20px;      
     margin: 20px;
