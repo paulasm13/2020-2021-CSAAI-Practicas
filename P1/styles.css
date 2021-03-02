@@ -16,20 +16,6 @@ h1 {
     
 }
 
-.minicontainer{
-    display: inline-block;
-    background-color: rgba(233, 165, 77, 0.5);
-    color: black;
-    text-align: left;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    border-radius: 10px;
-    border: 2px solid honeydew;
-    height: 550px;
-    width: 350px;
-    padding: 5px;
-    margin: 5px;
-}
-
 .container{
     display: inline-block;
     color: black;
@@ -38,8 +24,22 @@ h1 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-radius: 10px;
     border: 2px solid honeydew;
-    height: 550px;
+    height: 650px;
     width: 850px;
+    padding: 5px;
+    margin: 5px;
+}
+
+.minicontainer{
+    display: inline-block;
+    background-color: rgba(233, 165, 77, 0.5);
+    color: black;
+    text-align: left;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border-radius: 10px;
+    border: 2px solid honeydew;
+    height: 650px;
+    width: 350px;
     padding: 5px;
     margin: 5px;
 }
