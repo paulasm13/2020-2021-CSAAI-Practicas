@@ -10,7 +10,6 @@ h1 {
     background-color: honeydew;
     border: 2px solid burlywood;
     border-radius: 10px;
-    padding: 10px;    
 }
 
 .container{
@@ -42,11 +41,13 @@ h1 {
 }
 
 .imagen{
-    width:250px;
+    width:200px;
     height:250px;
     border-radius:150px;
     border:2px solid honeydew;
-    margin: 3px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 p {
