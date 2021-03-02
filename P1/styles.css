@@ -10,10 +10,7 @@ h1 {
     background-color: honeydew;
     border: 2px solid burlywood;
     border-radius: 10px;
-    padding: 10px;      
-    margin: 5px;
-
-    
+    padding: 10px;    
 }
 
 .container{
@@ -48,7 +45,8 @@ h1 {
     width:250px;
     height:250px;
     border-radius:150px;
-    border:2px solid rgb(250, 244, 244);
+    border:2px solid honeydew;
+    margin: 3px;
 }
 
 p {
