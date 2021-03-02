@@ -21,21 +21,21 @@ h1 {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-radius: 10px;
     border: 2px solid honeydew;
-    height: 600px;
+    height: 650px;
     width: 850px;
     padding: 3px;      
     margin: 3px;
 }
 
 .minicontainer{
-    display: inline-block;
+    display: inline-block; flex: auto;
     background-color: rgba(233, 165, 77, 0.5);
     color: black;
     text-align: left;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-radius: 10px;
     border: 2px solid honeydew;
-    height: 600px;
+    height: 650px;
     width: 350px;
     padding: 3px;      
     margin: 3px;
