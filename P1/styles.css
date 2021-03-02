@@ -11,6 +11,7 @@ h1 {
 }
 
 .container{
+    float: left;
     color: black;
     background-color: honeydew;
     text-align: left;
@@ -23,6 +24,7 @@ h1 {
 }
 
 .minicontainer{
+    float: right;
     color: black;
     background-color: honeydew;
     text-align: right;
