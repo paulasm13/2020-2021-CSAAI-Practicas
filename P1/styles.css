@@ -13,7 +13,7 @@ h1 {
 }
 
 .container{
-    float: none;
+    float: right;
     background-color: rgba(233, 165, 77, 0.5);
     color: black;
     text-align: left;
