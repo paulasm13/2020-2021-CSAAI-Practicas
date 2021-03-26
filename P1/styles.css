@@ -14,7 +14,7 @@ h1 {
     margin: 3px;}
 
 .container{
-    float: right;
+    display: inline-block;
     color: black;
     background-color:  rgba(233, 165, 77, 0.5);
     text-align: left;
@@ -22,21 +22,21 @@ h1 {
     border-radius: 10px;
     border: 2px solid honeydew;
     height: 700px;
-    width: 850px;
+    width: 1069px;
     padding: 3px;      
     margin: 3px;
 }
 
 .minicontainer{
     float: left;
-    background-color: rgba(112, 107, 100, 0.5);
+    background-color: rgba(233, 165, 77, 0.5);
     color: black;
     text-align: left;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
     border-radius: 10px;
     border: 2px solid honeydew;
-    height: 600px;
-    width: 350px;
+    height: 700px;
+    width: 400px;
     padding: 3px;      
     margin: 3px;
 }
