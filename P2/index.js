@@ -5,6 +5,9 @@ display = document.getElementById("display")
 suma = document.getElementById("suma")
 igual = document.getElementById("igual")
 clear = document.getElementById("clear")
+delete_lastnumber = document.getElementById("delete")
+point = document.getElementById("point")
+
 
 //-- Variables con varios arrays de elementos de una clase.
 let digits = document.getElementsByClassName('digit');
@@ -32,7 +35,7 @@ function start (value)
         //-- Pasar al siguiente estado
         estado = ESTADO.OP1;
         console.log('Primer valor en curso, estado 1.');
-    } else {
+    } else (estado == ESTADO.OP1 || estado == ESTADO.OP2 || estado == ESTADO.OPERATION) {
         //--En cualquier otro estado lo añadimos en el display sin eliminar el anterior valor.
         display.innerHTML += value;
         if(estado == ESTADO.OPERATION) {
@@ -78,7 +81,17 @@ equal.onclick = () => {
 //-- Poner a cero la expresion
 //-- Y volver al estado inicial
 clear.onclick = () => {
-  display.innerHTML = "0";
+  display.innerHTML = "";
   estado = ESTADO.INIT;
   console.log('Se elimina todo, estado 0.');
+}
+
+//-- Eliminar último valor, en caso de que sea 0 se queda sin valor
+delete_lastnumber.onclick = () => {
+    if(display.innerHTML == "0"{
+        display.innerHTML = "";
+    }else{
+        display.innerHTML = display.innerHTML.slice(0,-1);
+    }
+    console.log('Último valor eliminado.');
 }
