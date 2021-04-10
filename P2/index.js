@@ -1,6 +1,4 @@
-console.log("Ejecutando JS...");
-
-//-- 
+console.log("Ejecutando JS calculadora...");
 
 display = document.getElementById("display")
 suma = document.getElementById("suma")
@@ -22,44 +20,29 @@ const ESTADO = {
  //-- Variable de estado de la calculadora
  //-- Al comenzar estamos en el estado incial
  let estado = ESTADO.INIT;   
- console.log(digits);
 
- //-- Creo un array con todos los digitos del html
-//-- Establecer la misma función de retrollamada
-//-- para todos los botones de tipo dígito
-
-
-    //-- Se ejecuta cuando se pulsa un boton
-    //-- que es un dígito. Para que el código sea 
-    //-- mas legible la función de retrollamada se
-    //-- escribe como una función normal (digito)
-
-
-
-//--for (i=0; i<digits.length; i++){
-    //digits[i].onclick = (ev)=> {
-      //value = ev.target.value;
-     // console.log('Digito!');
-    
-    // console.log(value);
-    //  console.log(digits);
-   // }
- //- }
-  
+//-- Se ejecuta cuando se pulsa un botón
+//-- que es un dígito. Se le pasa la función start.
+for (let number of digits){
+    number.onclick = (ev) =>{
+        start(ev.target.value);
+        console.log('Digito');
+    }
+} 
 
 //-- Función de retrollamada de los digitos
-function start (number)
+function start (value)
 {
     //-- Si es el primer dígito (estado inicial), no lo añadimos,
     //-- sino que lo mostramos directamente en el display, eliminando el 0 por defecto.
     if (estado == ESTADO.INIT) {
-        console.log('PrimerEstadoOkkk')
-        display.innerHTML += ev.target.value;
+        console.log('Primer estado superado.')
+        display.innerHTML = value;
         //-- Pasar al siguiente estado
         estado = ESTADO.OP1;
     } else {
-        //--En cualquier otro estado lo añadimos
-        display.innerHTML += ev.target.value;
+        //--En cualquier otro estado lo añadimos en el display sin eliminar el anterior valor.
+        display.innerHTML += value;
 
         //-- Y nos quedamos en el mismo estado
         //-- Ojo! Este ejemplo sólo implementa el primer
@@ -67,13 +50,6 @@ function start (number)
         //-- cuenta el resto... lo debes hacer en tu práctica
     } 
     
-}
-
-for (let number of digits){
-    number.onclick = (ev)=>{
-        value = ev.target.value;
-        console.log(value);
-    }
 }
 
 
