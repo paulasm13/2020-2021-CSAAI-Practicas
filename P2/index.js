@@ -22,7 +22,6 @@ const ESTADO = {
  //-- Al comenzar estamos en el estado incial.
  let estado = ESTADO.INIT;   
 
-
 //-- Función de retrollamada de los digitos.
 function start (value)
 {
@@ -40,15 +39,8 @@ function start (value)
             estado = ESTADO.OP2;
             console.log('Segundo valor en curso, pasa al estado 3.');
         }
-
-        //-- Y nos quedamos en el mismo estado
-        //-- Ojo! Este ejemplo sólo implementa el primer
-        //-- estado del diagrama. Habría que tener en 
-        //-- cuenta el resto... lo debes hacer en tu práctica
     } 
-    
 }
-
 
 //-------- Resto de funciones de retrollamada
 
@@ -61,7 +53,8 @@ for (let number of digits){
     }
 } 
 
-//-- Recorre el array de los operadores
+//-- Se ejecuta cuando se pulsa un botón
+//-- que es un operador. 
 for (let object of operations){
     object.onclick = (ev) =>{
         if(estado == ESTADO.OP1){
@@ -72,13 +65,6 @@ for (let object of operations){
     }
 }
 
-
-    //-- Para que la calculadora funcione bien
-    //-- sólo se debe permitir insertar el operador
-    //-- en el estado OP1, y debe cambiar el estado
-    //-- a OPERATION (según el diagrama de estados)
-
-
 //-- Evaluar la expresion
 equal.onclick = () => {
     if(estado == ESTADO.OP2){
@@ -87,10 +73,6 @@ equal.onclick = () => {
         estado = ESTADO.OP1;
         console.log('Segundo valor OK + resultado, vuelve al estado 1.');
     }
-    //-- ¡Ojo! Aquí se hace siempre!
-    //-- Sólo se debe permitar que eso se haga
-    //-- si se está en el estado final (OP2)
-  
 }
 
 //-- Poner a cero la expresion
