@@ -32,14 +32,13 @@ function start (value)
         display.innerHTML = value;
         //-- Pasar al siguiente estado
         estado = ESTADO.OP1;
-        console.log('Estado inicial superado.');
+        console.log('Primer valor en curso, estado 1.');
     } else {
         //--En cualquier otro estado lo añadimos en el display sin eliminar el anterior valor.
         display.innerHTML += value;
-        console.log('Añadiendo valores...')
         if(estado == ESTADO.OPERATION) {
             estado = ESTADO.OP2;
-            console.log('Se indica operación a realizar, pasa al segundo estado.');
+            console.log('Segundo valor en curso, pasa al estado 3.');
         }
 
         //-- Y nos quedamos en el mismo estado
@@ -58,7 +57,7 @@ function start (value)
 for (let number of digits){
     number.onclick = (ev) =>{
         start(ev.target.value);
-        console.log('Digito');
+        console.log('Digito añadido...');
     }
 } 
 
@@ -68,7 +67,7 @@ for (let object of operations){
         if(estado == ESTADO.OP1){
             display.innerHTML += ev.target.value;
             estado = ESTADO.OPERATION;
-            console.log('Operación a realizar, pasa al estado 2.')
+            console.log('Primer valor OK + operador, pasa al estado 2.')
         }
     }
 }
@@ -86,7 +85,7 @@ equal.onclick = () => {
         //-- Calcular la expresión y añadirla al display
         display.innerHTML = eval(display.innerHTML);
         estado = ESTADO.OP1;
-        console.log('Operación calculada, volvemos al estado uno.');
+        console.log('Segundo valor OK + resultado, vuelve al estado 1.');
     }
     //-- ¡Ojo! Aquí se hace siempre!
     //-- Sólo se debe permitar que eso se haga
@@ -99,5 +98,5 @@ equal.onclick = () => {
 clear.onclick = () => {
   display.innerHTML = "0";
   estado = ESTADO.INIT;
-  console.log('Se borra todo, estado inicial.');
+  console.log('Se elimina todo, estado 0.');
 }
