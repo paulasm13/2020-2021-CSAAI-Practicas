@@ -1,0 +1,9 @@
+/* Estilo del canvas */
+
+canvas {
+    background-color: rgb(228, 227, 227);
+    border-style: solid;
+    border-width: 3px;
+    border-color: black;
+    border-radius: 6px;
+}
