@@ -1,12 +1,12 @@
 body {
-    background-color: rgb(68, 1, 1);
+    background-color: blanchedalmond;
 }
 
 /* Estilo del canvas */
 
 canvas {
     /* margin-left: 430px; Al final */
-    background-color: bisque;
+    background-color: white;
     border-style: solid;
     border-width: 3px;
     border-color: black;
