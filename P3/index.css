@@ -1,7 +1,12 @@
+body {
+    background-color: rgb(68, 1, 1);
+}
+
 /* Estilo del canvas */
 
 canvas {
-    background-color: rgba(241, 239, 239, 0.939);
+    /* margin-left: 430px; Al final */
+    background-color: bisque;
     border-style: solid;
     border-width: 3px;
     border-color: black;
