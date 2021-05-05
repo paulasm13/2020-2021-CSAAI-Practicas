@@ -38,9 +38,32 @@ function drawPaddle() {
         ctx.fillStyle = 'black';
         ctx.fill();
     ctx.closePath();
+    booleanPaddle();
 }
 
-// Pelota en movimiento
+// Raqueta en movimiento
+function booleanPaddle() {
+    window.onkeydown = (e) => {     // Tecla pulsada
+        if (e.keyCode == 39) {
+            rightPressed = true;
+            console.log(rightPressed);
+        }
+        else if(e.keyCode == 37) {
+            leftPressed = true;
+        } 
+    }
+    window.onkeyup = (e) => {       // Tecla liberada
+        if (e.keyCode == 39) {
+            rightPressed = false;
+        }
+        else if(e.keyCode == 37) {
+            leftPressed = false;
+            console.log(leftPressed);
+        } 
+    }
+}
+
+// Movimientos del juego
 function move() {
     console.log('Pelota en mvto...');
     if (x < ballSize || x >= (canvas.width - ballSize) ) {
@@ -49,9 +72,19 @@ function move() {
     if (y <= ballSize || y > (canvas.height - ballSize) ) {
         vely = -vely
     }
+    
+    if(rightPressed && paddle < canvas.width - paddleWidth) {
+        paddle = paddle + 7;
+    }
+    else if(leftPressed && paddle > 0) {
+        paddle = paddle - 7;
+    }
+
     x = x + velx;
     y = y + vely;
+
     ctx.clearRect(0, 0, canvas.width, canvas.height);
+
     drawBall();
     drawPaddle();
     requestAnimationFrame(move);
