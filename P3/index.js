@@ -14,6 +14,8 @@ var ballSize = 10;
 var paddleHeight = 12;
 var paddleWidth = 65;
 var paddle = (canvas.width - paddleWidth)/2;
+var rightPressed = false;
+var leftPressed = false;
 
 let x = canvas.width/2;
 let y = canvas.height-20;
