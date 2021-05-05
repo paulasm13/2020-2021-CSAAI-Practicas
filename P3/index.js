@@ -11,12 +11,14 @@ const ctx = canvas.getContext("2d");
 
 // Variables
 var ballSize = 10;
-
+var paddleHeight = 12;
+var paddleWidth = 65;
+var paddle = (canvas.width - paddleWidth)/2;
 
 let x = canvas.width/2;
 let y = canvas.height-20;
-let velx = 3;
-let vely = 1;
+let velx = 4;
+let vely = 2;
 
 // Dibujo pelota
 function drawBall() {
@@ -27,19 +29,29 @@ function drawBall() {
     ctx.closePath();
 }
 
+// Dibujo raqueta
+function drawPaddle() {
+    ctx.beginPath();
+        ctx.rect(paddle, canvas.height-paddleHeight, paddleWidth, paddleHeight);
+        ctx.fillStyle = 'black';
+        ctx.fill();
+    ctx.closePath();
+}
+
 // Pelota en movimiento
 function move() {
-    console.log('Función mvto');
-    if (x < 0 || x >= (canvas.width - ballSize) ) {
+    console.log('Pelota en mvto...');
+    if (x < ballSize || x >= (canvas.width - ballSize) ) {
         velx = -velx;
     }
-    if (y <= 0 || y > (canvas.height - ballSize) ) {
+    if (y <= ballSize || y > (canvas.height - ballSize) ) {
         vely = -vely
     }
     x = x + velx;
     y = y + vely;
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     drawBall();
+    drawPaddle();
     requestAnimationFrame(move);
 }
 
