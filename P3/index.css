@@ -1,7 +1,7 @@
 /* Estilo del canvas */
 
 canvas {
-    background-color: rgb(228, 227, 227);
+    background-color: rgba(241, 239, 239, 0.939);
     border-style: solid;
     border-width: 3px;
     border-color: black;

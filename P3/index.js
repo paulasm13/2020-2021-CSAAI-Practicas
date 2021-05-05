@@ -9,6 +9,11 @@ var brickHeight = 20;
 var brickPadding = 8;    // Espacio entre ladrillos
 var brickMarginTop = 40;
 var brickMarginLeft = 15;
+// Variables pelota (Coord-Vel)
+let x = canvas.width/2;
+let y = canvas.height/2+500;
+let velx = 3;
+let vely = 1;
 
 // Defino el tamaño del canvas
 canvas.width = 550;
@@ -43,7 +48,39 @@ function drawBricks() {
     }
 }
 
-drawBricks();
+// Dibujo pelota
+function drawBall() {
+    ctx.beginPath();
+    ctx.arc(x, y, 10, 0, Math.PI*2, false);
+    ctx.fillStyle = 'black';
+    ctx.fill();
+    ctx.closePath();
+}
 
+//function moveBall() {
+  //  console.log('Ejecutando movimientos con la pelota...');
+    // Rebote en extremos
+    //if (x < 0 || x >= (canvas.width) {
+      //  velx = -velx;
+    //}
+   // if (y <= 0 || y > canvas.height) {
+     //   vely = -vely;
+    //}
+    // Actualizar posición
+    //x = x + velx;
+    //y = y + vely;
+    // Borrar canvas
+    //ctx.clearRect(0, 0, canvas.width, canvas.height);
+    //ctx.beginPath();    // Dibujar la pelota
+      //  ctx.arc(x, y, 10, 0, Math.PI*2);
+        //ctx.fillStyle = 'black';
+        // ctx.fill();
+   // ctx.closePath();
+   // requestAnimationFrame(moveBall);
+//}
+
+drawBricks();
+drawBall();
+//moveBall();
 
     
