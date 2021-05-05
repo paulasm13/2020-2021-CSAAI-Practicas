@@ -18,7 +18,7 @@ var rightPressed = false;
 var leftPressed = false;
 
 let x = canvas.width/2;
-let y = canvas.height-20;
+let y = canvas.height-190;
 let velx = 4;
 let vely = 2;
 
@@ -66,11 +66,19 @@ function booleanPaddle() {
 // Movimientos del juego
 function move() {
     console.log('Pelota en mvto...');
-    if (x < ballSize || x >= (canvas.width - ballSize) ) {
+    if (x < ballSize || x >= (canvas.width - ballSize)) {
         velx = -velx;
     }
-    if (y <= ballSize || y > (canvas.height - ballSize) ) {
+    if (y <= ballSize) {
         vely = -vely
+    }
+    else if(y > (canvas.height - ballSize)) {
+        if(x > paddle && x < paddle + paddleWidth){
+            vely = -vely;
+        }
+        else{
+            alert('GAME OVER');
+        }
     }
     
     if(rightPressed && paddle < canvas.width - paddleWidth) {
@@ -89,6 +97,7 @@ function move() {
     drawPaddle();
     requestAnimationFrame(move);
 }
+
 
 move();
 
