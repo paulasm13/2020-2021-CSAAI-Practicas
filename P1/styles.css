@@ -73,13 +73,14 @@ b {     /* Aumento la fuente de los títulos de la lista */
 .video {        /* Clase vídeo Youtube */
     width: 350px;
     height: 215px;
-    margin-top: 3px;
+    margin-top: 5px;
     margin-left: 17px;
     border: 2px solid honeydew;
     border-radius: 10px;
 }
 
 .viajes {        /* Clase imagenes de viajes. */
+    margin-top: 5px;
     width: 280px;
     height: 200px;
     border: 2px solid honeydew;
