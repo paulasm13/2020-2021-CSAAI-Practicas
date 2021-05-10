@@ -22,7 +22,7 @@ const BRICK = {
     width: 50,
     height: 20,
     padding: 8,
-    marginTop: 40,
+    marginTop: 60,
     marginLeft: 15,
     show: true
 };
@@ -31,6 +31,8 @@ let x = canvas.width/2;
 let y = canvas.height-190;
 let velx = 4;
 let vely = 2;
+let scores = 0;
+let lifes = 3;
 
 // Dibujo pelota
 function drawBall() {
@@ -109,10 +111,19 @@ function collisions() {
                 if(x > l.x && x < l.x + BRICK.width && y > l.y && y < l.y + BRICK.height) {
                     vely = -vely;
                     l.visible = false;
+                    scores += 1;
                 }
             }
         }
     }
+}
+
+// Mostrar puntuación y vidas
+function drawPoints() {
+    ctx.font = "25px Arial";
+    ctx.filltyle = 'black';
+    ctx.fillText("Puntuación: " + scores, 10, 40);
+    ctx.fillText("Vidas: " + lifes, 430, 40);
 }
 
 // Movimientos del juego
@@ -128,11 +139,14 @@ function move() {
         if(x > paddle && x < paddle + paddleWidth){
             vely = -vely;
         }
-        else{
-            alert('GAME OVER');
+        else {
+            lifes -= 1;
+            if(lifes <= 0) {
+                 alert("GAME OVER");
+                document.location.reload()
+            }
         }
     }
-    
     if(rightPressed && paddle < canvas.width - paddleWidth) {
         paddle = paddle + 7;
     }
@@ -148,9 +162,9 @@ function move() {
     drawBricks();
     drawBall();
     drawPaddle();
+    drawPoints();
     requestAnimationFrame(move);
 }
-
 
 move();
 
