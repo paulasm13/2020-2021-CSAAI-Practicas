@@ -26,22 +26,20 @@ const ESTADO = {
 const click = new Audio("click.mp3");
 const fail = new Audio("fail.mp3");
  
- //-- Variable de estado de la calculadora.
- //-- Al comenzar estamos en el estado incial.
+ //-- Comienza en estado inicial.
  let estado = ESTADO.INIT;   
 
 //-- Función de retrollamada de los digitos.
 function start (value)
 {
-    //-- Si es el primer dígito (estado inicial), no lo añadimos,
-    //-- sino que lo mostramos directamente en el display, eliminando el 0 por defecto.
+    // Si es el primer dígito (estado inicial), no lo añade,
+    // sino que lo muestra directamente en el display, eliminando el 0 por defecto.
     if (estado == ESTADO.INIT) {
         display.innerHTML = value;
-        //-- Pasar al siguiente estado
         estado = ESTADO.OP1;
         console.log('Primer valor en curso, estado 1.');
     } else if (estado == ESTADO.OP1 || estado == ESTADO.OP2 || estado == ESTADO.OPERATION) {
-        //--En cualquier otro estado lo añadimos en el display sin eliminar el anterior valor.
+        // En cualquier otro estado, añade el valor en el display sin eliminar el anterior.
         display.innerHTML += value;
         if(estado == ESTADO.OPERATION) {
             estado = ESTADO.OP2;
@@ -52,19 +50,16 @@ function start (value)
     click.play();
 }
 
-//-------- Resto de funciones de retrollamada
+//-- Resto de funciones de retrollamada
 
-//-- Se ejecuta cuando se pulsa un botón
-//-- que es un dígito. Se le pasa la función start.
+// Ejecución de digitos
 for (let number of digits){
     number.onclick = (ev) =>{
         start(ev.target.value);
-        console.log('Digito añadido...');
     }
 } 
 
-//-- Se ejecuta cuando se pulsa un botón
-//-- que es un operador. 
+// Ejecución de operadores 
 for (let object of operations){
     object.onclick = (ev) =>{
         if(estado == ESTADO.OP1){
@@ -73,50 +68,48 @@ for (let object of operations){
             console.log('Primer valor OK + operador, pasa al estado 2.');
             click.play();
         } else if (estado == ESTADO.OPERATION) {
-            fail.play();    
+            fail.play();    // Sonido de error en caso de más de un operador
             console.log("No puede introducir más de un operador.");
 
         }
     }
 }
 
-//-- Evaluar la expresion
+// Evalua la expresión
 equal.onclick = () => {
     if(estado == ESTADO.OP2){
-        //-- Calcular la expresión y añadirla al display
         display.innerHTML = eval(display.innerHTML);
         estado = ESTADO.OP1;
         console.log('Segundo valor OK + resultado, vuelve al estado 1.');
         click.play();
     } else {
-        fail.play();    //-- Sonido de error en caso de operación no calculable
+        fail.play();    // Sonido de error en caso de operación no calculable
         console.log("No se puede calcular ninguna expresión.");
     }
     
 }
 
-//-- Poner a cero la expresion
-//-- Y volver al estado inicial
+// Pone a cero la expresion
+// y vuelve al estado inicial
 clear.onclick = () => {
   display.innerHTML = "";
   estado = ESTADO.INIT;
-  console.log('Se elimina todo, estado 0.');
+  console.log('Se elimina todo, estado inicial.');
   click.play();
 }
 
-//-- Eliminar último valor
+// Elimina el último valor
 delete_lastnumber.onclick = () => {
     display.innerHTML = display.innerHTML.slice(0,-1);
     console.log('Último valor eliminado.');
     click.play();
 }
 
-//-- Evaluar la coma para evitar errores
+// Evalua la coma para evitar errores
 point.onclick = () => {
     if(ESTADO.COMA == true) {
-        console.log(ESTADO.COMA);
         console.log("No puede introducir más comas.");
-        fail.play();
+        fail.play();    // Sonido de error para más de una coma
     } else {
         display.innerHTML += ".";
         console.log('Número con decimales.');
