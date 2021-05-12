@@ -18,8 +18,13 @@ const ESTADO = {
     INIT: 0,
     OP1: 1,
     OPERATION: 2,
-    OP2: 3
+    OP2: 3,
+    COMA: false,
 }
+
+//-- Sonidos
+const click = new Audio("click.mp3");
+const fail = new Audio("fail.mp3");
  
  //-- Variable de estado de la calculadora.
  //-- Al comenzar estamos en el estado incial.
@@ -40,9 +45,11 @@ function start (value)
         display.innerHTML += value;
         if(estado == ESTADO.OPERATION) {
             estado = ESTADO.OP2;
+            ESTADO.COMA = false;
             console.log('Segundo valor en curso, pasa al estado 3.');
         }
     }
+    click.play();
 }
 
 //-------- Resto de funciones de retrollamada
@@ -63,7 +70,8 @@ for (let object of operations){
         if(estado == ESTADO.OP1){
             display.innerHTML += ev.target.value;
             estado = ESTADO.OPERATION;
-            console.log('Primer valor OK + operador, pasa al estado 2.')
+            console.log('Primer valor OK + operador, pasa al estado 2.');
+            click.play();
         }
     }
 }
@@ -76,6 +84,7 @@ equal.onclick = () => {
         estado = ESTADO.OP1;
         console.log('Segundo valor OK + resultado, vuelve al estado 1.');
     }
+    click.play();
 }
 
 //-- Poner a cero la expresion
@@ -84,6 +93,7 @@ clear.onclick = () => {
   display.innerHTML = "";
   estado = ESTADO.INIT;
   console.log('Se elimina todo, estado 0.');
+  click.play();
 }
 
 //-- Eliminar último valor, en caso de que sea 0 se queda sin valor
@@ -94,4 +104,19 @@ delete_lastnumber.onclick = () => {
         display.innerHTML = display.innerHTML.slice(0,-1);
     }
     console.log('Último valor eliminado.');
+    click.play();
+}
+
+//-- Evaluar la coma para evitar errores
+point.onclick = () => {
+    if(ESTADO.COMA == true) {
+        console.log(ESTADO.COMA);
+        console.log("No puede introducir más comas.");
+        fail.play();
+    } else {
+        display.innerHTML += ".";
+        console.log('Número con decimales.');
+        ESTADO.COMA = true;
+        click.play();
+    }
 }
