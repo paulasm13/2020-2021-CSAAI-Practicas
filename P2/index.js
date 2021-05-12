@@ -35,14 +35,14 @@ function start (value)
         //-- Pasar al siguiente estado
         estado = ESTADO.OP1;
         console.log('Primer valor en curso, estado 1.');
-    } else (estado == ESTADO.OP1 || estado == ESTADO.OP2 || estado == ESTADO.OPERATION) {
+    } else if (estado == ESTADO.OP1 || estado == ESTADO.OP2 || estado == ESTADO.OPERATION) {
         //--En cualquier otro estado lo añadimos en el display sin eliminar el anterior valor.
         display.innerHTML += value;
         if(estado == ESTADO.OPERATION) {
             estado = ESTADO.OP2;
             console.log('Segundo valor en curso, pasa al estado 3.');
         }
-    } 
+    }
 }
 
 //-------- Resto de funciones de retrollamada
@@ -88,9 +88,9 @@ clear.onclick = () => {
 
 //-- Eliminar último valor, en caso de que sea 0 se queda sin valor
 delete_lastnumber.onclick = () => {
-    if(display.innerHTML == "0"{
+    if (display.innerHTML == "0") {
         display.innerHTML = "";
-    }else{
+    } else {
         display.innerHTML = display.innerHTML.slice(0,-1);
     }
     console.log('Último valor eliminado.');
