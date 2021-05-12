@@ -72,6 +72,10 @@ for (let object of operations){
             estado = ESTADO.OPERATION;
             console.log('Primer valor OK + operador, pasa al estado 2.');
             click.play();
+        } else if (estado == ESTADO.OPERATION) {
+            fail.play();    
+            console.log("No puede introducir más de un operador.");
+
         }
     }
 }
@@ -83,8 +87,12 @@ equal.onclick = () => {
         display.innerHTML = eval(display.innerHTML);
         estado = ESTADO.OP1;
         console.log('Segundo valor OK + resultado, vuelve al estado 1.');
+        click.play();
+    } else {
+        fail.play();    //-- Sonido de error en caso de operación no calculable
+        console.log("No se puede calcular ninguna expresión.");
     }
-    click.play();
+    
 }
 
 //-- Poner a cero la expresion
@@ -96,13 +104,9 @@ clear.onclick = () => {
   click.play();
 }
 
-//-- Eliminar último valor, en caso de que sea 0 se queda sin valor
+//-- Eliminar último valor
 delete_lastnumber.onclick = () => {
-    if (display.innerHTML == "0") {
-        display.innerHTML = "";
-    } else {
-        display.innerHTML = display.innerHTML.slice(0,-1);
-    }
+    display.innerHTML = display.innerHTML.slice(0,-1);
     console.log('Último valor eliminado.');
     click.play();
 }

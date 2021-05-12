@@ -46,6 +46,6 @@ button {
     font-family: sans-serif;
 }
 
-button:hover{
+button:hover {  /* Aclarar botón presionado */
     background-color:rgb(79, 127, 160);
 }
