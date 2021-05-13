@@ -7,6 +7,8 @@ igual = document.getElementById("igual")
 clear = document.getElementById("clear")
 delete_lastnumber = document.getElementById("delete")
 point = document.getElementById("point")
+sqrt = document.getElementById("sqrt")
+
 
 
 //-- Variables con varios arrays de elementos de una clase.
@@ -75,7 +77,7 @@ for (let object of operations){
     }
 }
 
-// Evalua la expresión
+// Evalúa la expresión
 equal.onclick = () => {
     if(estado == ESTADO.OP2){
         display.innerHTML = eval(display.innerHTML);
@@ -105,7 +107,7 @@ delete_lastnumber.onclick = () => {
     click.play();
 }
 
-// Evalua la coma para evitar errores
+// Evalúa la coma para evitar errores
 point.onclick = () => {
     if(ESTADO.COMA == true) {
         console.log("No puede introducir más comas.");
@@ -116,4 +118,10 @@ point.onclick = () => {
         ESTADO.COMA = true;
         click.play();
     }
+}
+
+// Evalúa raiz cuadrada
+sqrt.onclick = () => {
+    display.innerHTML = Math.sqrt(display.innerHTML);
+    click.play();
 }
