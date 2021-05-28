@@ -1,4 +1,4 @@
-console.log('Ejecutando JS...');
+console.log('Ejecutando JS del Breakout...');
 
 const canvas = document.getElementById("canvas");
 
@@ -32,7 +32,7 @@ let y = canvas.height-190;
 let velx = 4;
 let vely = 2;
 let scores = 0;
-let lifes = 3;
+let lifes = 5;
 
 // Dibujo pelota
 function drawBall() {
@@ -120,7 +120,7 @@ function collisions() {
 
 // Mostrar puntuación y vidas
 function drawPoints() {
-    ctx.font = "25px Arial";
+    ctx.font = "25px Fantasy";
     ctx.filltyle = 'black';
     ctx.fillText("Puntuación: " + scores, 10, 40);
     ctx.fillText("Vidas: " + lifes, 430, 40);
@@ -134,23 +134,21 @@ function move() {
     }
     if (y <= ballSize) {
         vely = -vely
-    }
-    else if(y > (canvas.height - ballSize)) {
-        if(x > paddle && x < paddle + paddleWidth){
-            vely = -vely;
-        }
-        else {
-            lifes -= 1;
-            if(lifes <= 0) {
-                 alert("GAME OVER");
-                document.location.reload()
+    } else if (y > (canvas.height - ballSize)) {
+        if (x > paddle && x < paddle + paddleWidth) {
+            vely = -vely;   // En caso de rebotar en la raqueta
+        }else{            // En caso de tocar el suelo
+            lifes = lifes - 1;
+            console.log(lifes);
+            if (lifes <= 0) {
+                alert("GAME OVER");
+                document.location.reload();
             }
         }
     }
     if(rightPressed && paddle < canvas.width - paddleWidth) {
         paddle = paddle + 7;
-    }
-    else if(leftPressed && paddle > 0) {
+    } else if(leftPressed && paddle > 0) {
         paddle = paddle - 7;
     }
 
