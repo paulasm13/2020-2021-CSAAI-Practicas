@@ -2,23 +2,40 @@ console.log("Ejecutando JS....")
 
 //-- Obtener elementos del DOM
 const canvas = document.getElementById('canvas');
-const img1 = document.getElementById('imagesrc1');
-const img2 = document.getElementById('imagesrc2');
+const pict1 = document.getElementById('source1');
+const pict2 = document.getElementById('source2');
 const ctx = canvas.getContext('2d');
+button1 = document.getElementById("img1");
+button2 = document.getElementById("img2");
 
-//-- Para la imagen uno
-img1.onload = function () {
 
-  console.log("Imagen cargada");
+button1.onclick = () => {
+  console.log("claaakc");
+  pict1.onload = function () {
+    console.log("Imagen 1 cargada");
+  };
+  canvas.width = pict1.width;
+  canvas.height = pict1.height;
+  ctx.drawImage(pict1, 0,0);
+}
 
-  //-- Se establece como tamaño del canvas el mismo
-  //-- que el de la imagen original
-  canvas.width = img1.width;
-  canvas.height = img1.height;
+button2.onclick = () => {
+  console.log("cliiikc");
+  pict2.onload = function () {
+    console.log("Imagen 2 cargada");
+  };
+  canvas.width = pict2.width;
+  canvas.height = pict2.height;
+  ctx.drawImage(pict2, 0,0);
+}
 
-  //-- Situar la imagen original en el canvas
-  //-- No se han hecho manipulaciones todavia
-  ctx.drawImage(img1, 0,0);
-};
+//boton2.onclick = () => {
+  //imagen2.onload = function(){
+    //console.log("Cargamos imagen 2");
+    //console.log("Imagen 2");
+  //};
+  //img = imagen2;
+  //ctx.drawImage(img, 0,0);
+//}
 
-console.log("Fin...");
+
