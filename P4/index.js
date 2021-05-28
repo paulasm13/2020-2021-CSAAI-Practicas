@@ -1,10 +1,11 @@
-console.log("Ejecutando JS....")
+console.log("Ejecutando JS....");
 
 //-- Obtener elementos del DOM
 const canvas = document.getElementById('canvas');
 const pict1 = document.getElementById('source1');
 const pict2 = document.getElementById('source2');
 const ctx = canvas.getContext('2d');
+buttonrgb = document.getElementById("rgb");
 button1 = document.getElementById("img1");
 button2 = document.getElementById("img2");
 
@@ -31,5 +32,9 @@ button2.onclick = () => {
   ctx.drawImage(pict2, 0,0);
 }
 
+// Filtro de color
+buttonrgb.onclick = () => {
+  
+}
 
 
