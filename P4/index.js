@@ -11,6 +11,8 @@ const button2 = document.getElementById('img2');
 const rgb = document.getElementById('rgb');
 const sliders = document.getElementById('sliders');
 const grey = document.getElementById('grey');
+const rotateH = document.getElementById('vueltaH');
+const rotateV = document.getElementById('vueltaV');
 
 // Deslizadores y sus valores correspondientes
 const sliderRed = document.getElementById('red');
@@ -20,7 +22,6 @@ const sliderBlue = document.getElementById('blue');
 const range_valueR = document.getElementById('valueR');
 const range_valueG = document.getElementById('valueG');
 const range_valueB = document.getElementById('valueB');
-
 
 // Elección de la imagen 1
 button1.onclick = () => {
@@ -118,3 +119,25 @@ grey.onclick = () => {
   console.log('Umbral de gris obtenido');
   ctx.putImageData(imgData, 0, 0);
 }
+
+// Filtro imagen especular
+rotateH.onclick = () => {
+  sliders.style.display = 'none';
+  console.log("Imagen volteada de forma horizontal");
+  ctx.drawImage(img, 0, 0);
+  ctx.translate(canvas.width, 0);
+  ctx.scale(-1, 1);
+  ctx.drawImage(img, 0, 0);
+}
+
+// Filtro imagen boca abajo
+rotateV.onclick = () => {
+  sliders.style.display = 'none';
+  console.log("Imagen volteada de forma vertical");
+  ctx.drawImage(img, 0, 0);
+  ctx.translate(0, canvas.height);
+  ctx.scale(1, -1);
+  ctx.drawImage(img, 0, 0);
+}
+
+// Filtro ruido
