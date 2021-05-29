@@ -13,6 +13,7 @@ const sliders = document.getElementById('sliders');
 const grey = document.getElementById('grey');
 const rotateH = document.getElementById('vueltaH');
 const rotateV = document.getElementById('vueltaV');
+const sepia = document.getElementById('sepia');
 
 // Deslizadores y sus valores correspondientes
 const sliderRed = document.getElementById('red');
@@ -66,7 +67,7 @@ function colors() {
   let umbralG = sliderGreen.value;
   let umbralB = sliderBlue.value;
 
-  for (let i = 0; i < data.length; i+=4) {
+  for (var i = 0; i < data.length; i+=4) {
     if (data[i] > umbralR){
       data[i] = umbralR;
     }
@@ -140,4 +141,21 @@ rotateV.onclick = () => {
   ctx.drawImage(img, 0, 0);
 }
 
-// Filtro ruido
+// Filtro sepia
+sepia.onclick = () => {
+  sliders.style.display = 'none';
+  ctx.drawImage(img, 0, 0);
+  let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  let data = imgData.data;
+  for (var i = 0; i < data.length; i+=4) {
+    r = data[i];
+    g = data[i+1];
+    b = data[i+2];
+    data[i] = (r * .393) + (g * .769) + (b * .189);
+    data[i+1] = (r * .349) + (g * .686) + (b * .168);
+    data[i+2]= (r * .272) + (g * .534) + (b * .131);
+  }
+  console.log('Efecto sepia aplicado');
+  ctx.putImageData(imgData, 0, 0);
+}
+  
