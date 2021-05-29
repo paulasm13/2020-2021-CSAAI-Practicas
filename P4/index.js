@@ -23,6 +23,7 @@ const range_valueB = document.getElementById('valueB');
 
 // Elección de la imagen 1
 button1.onclick = () => {
+  sliders.style.display = 'none';
   canvas.style.display = 'block';
   pict1.onload = function () {
     console.log("Imagen 1 cargada");
@@ -37,6 +38,7 @@ button1.onclick = () => {
 
 // Elección de la imagen 2
 button2.onclick = () => {
+  sliders.style.display = 'none';
   canvas.style.display = 'block';
   pict2.onload = function () {
     console.log("Imagen 2 cargada");
