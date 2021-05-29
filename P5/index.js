@@ -8,6 +8,8 @@ const btn_video2 = document.getElementById("btn_video2");
 const btn_video3 = document.getElementById("btn_video3");
 const btn_test = document.getElementById("btn_test");
 const btn_src_on = document.getElementById("btn_src_on");
+const btn_src_off = document.getElementById("btn_src_off");
+
 
 const STATE = {
     OFF: false,
@@ -69,6 +71,15 @@ btn_src_on.onclick = () => {
   live.poster = TEST_IMAGE_URL;
 };
 
+btn_src_off.onclick = () => {
+    console.log('Fuentes OFF');
+    state = STATE.OFF;
+    live.src = TEST_IMAGE_URL;
+    video1.src = TEST_IMAGE_URL;
+    video2.src = TEST_IMAGE_URL;
+    video3.src = TEST_IMAGE_URL;
+};
+
 //-- Botón de Test
 btn_test.onclick = () => {
     console.log('test');
@@ -83,7 +94,7 @@ btn_video1.onclick = () => {
         live.currentTime = video1.currentTime;
         live.play();
     } else {
-        console.log('Primero debes de activar las fuentes');        
+        console.log('Primero hay que activar las fuentes');        
     }
 };
 
@@ -94,7 +105,7 @@ btn_video2.onclick = () => {
         live.currentTime = video2.currentTime;
         live.play();
     } else {
-        console.log('Primero debes de activar las fuentes');        
+        console.log('Primero hay que activar las fuentes');        
     }
 };
 
@@ -105,6 +116,6 @@ btn_video3.onclick = () => {
         live.currentTime = video3.currentTime;
         live.play();
     } else {
-        console.log('Primero debes de activar las fuentes');        
+        console.log('Primero hay que activar las fuentes');        
     }
 };
