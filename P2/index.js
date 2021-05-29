@@ -3,7 +3,7 @@ console.log("Ejecutando JS calculadora...");
 //-- Identificadores cogidos del archivo html.
 display = document.getElementById("display")
 suma = document.getElementById("suma")
-igual = document.getElementById("igual")
+equal = document.getElementById("equal")
 clear = document.getElementById("clear")
 delete_lastnumber = document.getElementById("delete")
 point = document.getElementById("point")
