@@ -133,6 +133,7 @@ btn_video3.onclick = () => {
     }
 };
 
+//-- Opciones
 btn_play.onclick = () => {
     if(live.paused) {
         live.play();
