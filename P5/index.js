@@ -39,22 +39,31 @@ video3.poster = TEST_IMAGE_URL;
 let state = STATE.OFF;
 console.log("Estado inicial: " + state);
 
-//-- Boton de FUENTES-ON
+//-- FUENTES-ON
 btn_src_on.onclick = () => {
 
   // Cambio de estado
   state = STATE.ON;
   console.log("Cambio de estado: " + state);
+  console.log('Fuentes ON');
  
-  //-- Establecer la fuente de la cámara 1
+  //-- Establecer fuentes
   video1.src="https://gsyc.urjc.es/jmplaza/csaai/realizador-fuente1.mp4";
+  video2.src="https://gsyc.urjc.es/jmplaza/csaai/realizador-fuente2.mp4";
+  video3.src="https://gsyc.urjc.es/jmplaza/csaai/realizador-fuente3.mp4";
 
-  //-- Reprodeucimos un vídeo, desde el comienzo
+  //-- Reproducción de vídeos desde el comienzo en silencio
   video1.currentTime = 0;
   video1.play();
+  video1.muted = true;
 
-  //-- Y en silencio...
-  video1.muted;
+  video2.currentTime = 0;
+  video2.play();
+  video2.muted = true;
+
+  video3.currentTime = 0;
+  video3.play();
+  video3.muted = true;
 
   //-- En la emisión en directo ponemos la imagen de prueba
   live.poster = TEST_IMAGE_URL;
@@ -62,18 +71,40 @@ btn_src_on.onclick = () => {
 
 //-- Botón de Test
 btn_test.onclick = () => {
-    live.poster = TEST_IMAGE_URL;
+    console.log('test');
+    live.src = TEST_IMAGE_URL;
 };
 
 //-- Botón de Selección de la cámara 1
 btn_video1.onclick = () => {
-    console.log(state);
     if (state == STATE.ON){
-        console.log('Fuentes ON');
+        console.log('Vídeo 1 en directo');
         live.src = video1.src;
         live.currentTime = video1.currentTime;
         live.play();
     } else {
-        console.log('Primero fuentes ON!');        
+        console.log('Primero debes de activar las fuentes');        
+    }
+};
+
+btn_video2.onclick = () => {
+    if (state == STATE.ON){
+        console.log('Vídeo 2 en directo');
+        live.src = video2.src;
+        live.currentTime = video2.currentTime;
+        live.play();
+    } else {
+        console.log('Primero debes de activar las fuentes');        
+    }
+};
+
+btn_video3.onclick = () => {
+    if (state == STATE.ON){
+        console.log('Vídeo 3 en directo');
+        live.src = video3.src;
+        live.currentTime = video3.currentTime;
+        live.play();
+    } else {
+        console.log('Primero debes de activar las fuentes');        
     }
 };
