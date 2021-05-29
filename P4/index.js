@@ -10,6 +10,7 @@ const button1 = document.getElementById('img1');
 const button2 = document.getElementById('img2');
 const rgb = document.getElementById('rgb');
 const sliders = document.getElementById('sliders');
+const grey = document.getElementById('grey');
 
 // Deslizadores y sus valores correspondientes
 const sliderRed = document.getElementById('red');
@@ -99,3 +100,21 @@ rgb.onclick = () => {
     console.log("Edición azul");
   }  
 };
+
+// Filtro escala de grises
+grey.onclick = () => {
+  sliders.style.display = 'none';
+  ctx.drawImage(img, 0, 0);
+  let imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  let data = imgData.data;
+  var shine = 0;
+  for (var i = 0; i < data.length; i+=4) {
+    r = data[i];
+    g = data[i+1];
+    b = data[i+2];
+    shine = (3 * r + 4 * g + b)/8;
+    data[i] = data[i+1] = data[i+1] = shine;
+  }
+  console.log('Umbral de gris obtenido');
+  ctx.putImageData(imgData, 0, 0);
+}
