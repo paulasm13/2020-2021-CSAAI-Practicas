@@ -22,8 +22,8 @@ const STATE = {
     ON: true,
 }
 
-live.width=420;
-live.height=200;
+live.width=450;
+live.height=220;
 video1.width=200;  
 video1.height=100;
 video2.width=200;  

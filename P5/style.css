@@ -1,0 +1,27 @@
+body {
+    font: 16px verdana;
+    color: white;
+    background: linear-gradient(90deg, #7a0a0a 20%, #fdbaba 90%);
+    text-align: center;
+}
+
+.opciones {
+    float: right;
+}
+
+input {
+    width: 130px;
+    padding: 15px;
+    border: 2px solid rgb(108, 5, 5);;
+    border-radius: 12px;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-left: 5px;
+    font: 18px fantasy;
+    background-color: white;
+    color: rgb(108, 5, 5);
+}
+
+input:hover {  /* Aclarar botón presionado */
+    background-color: rgb(208, 156, 156);
+}
