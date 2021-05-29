@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="style.css">
     <script src="index.js" defer></script>
     <title>Práctica 4</title>
 </head>
@@ -24,14 +24,14 @@
             <button type="button" id="vueltav">Imagen boca abajo</button>
             <button type="button" id="r">Ruido</button>
             <br><br><br>
-            <div class="sliders">
-            <input type="range" id="range"> <span id="range_disp"></span>  
-                Valor final: <span id="range_disp2"></span>
-            <input type="range" id="range"> <span id="range_disp"></span>  
-                Valor final: <span id="range_disp2"></span>
-            <input type="range" id="range"> <span id="range_disp"></span>  
-                Valor final: <span id="range_disp2"></span>
-            </div>
+        </div>
+        <div id="sliders">
+            <h4>R<input type="range" id="red" min="0" max="255" value="255"/></p>
+            <p id="valueR">255</p>
+            <h4>G<input type="range" id="green" min="0" max="255" value="255"/></p>
+            <p id="valueG">255</p></h4>
+            <h4>B<input type="range" id="blue" min="0" max="255" value="255"/></p>
+            <p id="valueB">255</p></h4>
         </div>
     </div>
     <div class="change">

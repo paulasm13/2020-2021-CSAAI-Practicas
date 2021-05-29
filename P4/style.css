@@ -18,7 +18,8 @@ canvas {
     display: inline-block;
 }
 
-.sliders {
+#sliders {
+    /* No se muestra en pantalla */
     display: none;
 }
 
