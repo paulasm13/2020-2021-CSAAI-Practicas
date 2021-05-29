@@ -2,20 +2,22 @@ console.log('Ejecutando JS del Breakout...');
 
 const canvas = document.getElementById("canvas");
 
-// Defino el tamaño del canvas
+//-- Defino el tamaño del canvas
 canvas.width = 550;
 canvas.height = 690;
 
-// Obtengo el contexto del canvas
+//-- Obtengo el contexto del canvas
 const ctx = canvas.getContext("2d");
 
-// Variables
+//-- Variables
 var ballSize = 10;
 var paddleHeight = 12;
 var paddleWidth = 65;
 var paddle = (canvas.width - paddleWidth)/2;
 var rightPressed = false;
 var leftPressed = false;
+var inProcess = false;
+
 const BRICK = {
     rows: 7,
     columns: 9,
@@ -34,7 +36,7 @@ let vely = 2;
 let scores = 0;
 let lifes = 5;
 
-// Dibujo pelota
+//-- Dibujo pelota
 function drawBall() {
     ctx.beginPath();
         ctx.arc(x, y, ballSize, 0, Math.PI*2);
@@ -43,7 +45,7 @@ function drawBall() {
     ctx.closePath();
 }
 
-// Dibujo raqueta
+//-- Dibujo raqueta
 function drawPaddle() {
     ctx.beginPath();
         ctx.rect(paddle, canvas.height-paddleHeight, paddleWidth, paddleHeight);
@@ -53,17 +55,19 @@ function drawPaddle() {
     booleanPaddle();
 }
 
-// Estado teclas raqueta
+//-- Estado teclas raqueta y saque
 function booleanPaddle() {
-    window.onkeydown = (e) => {     // Tecla pulsada
+    window.onkeydown = (e) => {
         if (e.keyCode == 39) {
             rightPressed = true;
-        }
-        else if(e.keyCode == 37) {
+        } else if (e.keyCode == 37) {
             leftPressed = true;
-        } 
+        } else if (e.keyCode == 32 ) {
+            inProcess = true;
+            // Sacar con barra espaciadora
+        }
     }
-    window.onkeyup = (e) => {       // Tecla liberada
+    window.onkeyup = (e) => {
         if (e.keyCode == 39) {
             rightPressed = false;
         }
@@ -73,7 +77,7 @@ function booleanPaddle() {
     }
 }
 
-// Implemento ladrillos en matriz bidimensional
+//-- Implemento ladrillos en matriz bidimensional
 var bricks = [];
 for (i=0; i<BRICK.columns; i++) {
     bricks[i] = [];
@@ -86,7 +90,7 @@ for (i=0; i<BRICK.columns; i++) {
     }
 }
 
-// Dibujo ladrillos
+//-- Dibujo ladrillos
 function drawBricks() {
     collisions();
     for(i=0; i<BRICK.columns; i++) {
@@ -102,7 +106,7 @@ function drawBricks() {
     }
 }
 
-// Detecto colisiones 
+//-- Detecto colisiones 
 function collisions() {
     for(i=0; i<BRICK.columns; i++) {
         for(j=0; j<BRICK.rows; j++) {
@@ -118,7 +122,7 @@ function collisions() {
     }
 }
 
-// Mostrar puntuación y vidas
+//-- Mostrar puntuación y vidas
 function drawPoints() {
     ctx.font = "25px Fantasy";
     ctx.filltyle = 'black';
@@ -126,44 +130,51 @@ function drawPoints() {
     ctx.fillText("Vidas: " + lifes, 430, 40);
 }
 
-// Movimientos del juego
+//-- Movimientos del juego
 function move() {
     console.log('Pelota en mvto...');
-    if (x < ballSize || x >= (canvas.width - ballSize)) {
-        velx = -velx;
-    }
-    if (y <= ballSize) {
-        vely = -vely
-    } else if (y > (canvas.height - ballSize)) {
-        if (x > paddle && x < paddle + paddleWidth) {
-            vely = -vely;   // En caso de rebotar en la raqueta
-        }else{            // En caso de tocar el suelo
-            lifes = lifes - 1;
-            console.log(lifes);
-            if (lifes <= 0) {
-                alert("GAME OVER");
-                document.location.reload();
-            }
-        }
-    }
-    if(rightPressed && paddle < canvas.width - paddleWidth) {
-        paddle = paddle + 7;
-    } else if(leftPressed && paddle > 0) {
-        paddle = paddle - 7;
-    }
-
-    x = x + velx;
-    y = y + vely;
-
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-
     drawBricks();
     drawBall();
     drawPaddle();
     drawPoints();
+
+    if (inProcess) {
+        if (x < ballSize || x >= (canvas.width - ballSize)) {
+            velx = -velx;
+        }
+        if (y <= ballSize) {
+            vely = -vely
+        } else if (y > (canvas.height - ballSize)) {
+            if (x > paddle && x < paddle + paddleWidth) {
+                vely = -vely;   // En caso de rebotar en la raqueta
+            } else {            // En caso de tocar el suelo
+                lifes = lifes - 1;
+                console.log(lifes);
+                inProcess = false;
+                if (lifes <= 0) {
+                    alert("GAME OVER");
+                    document.location.reload();
+                } else {
+                    x = canvas.width/2;
+                    y = canvas.height-190;
+                    velx = 4;
+                    vely = 2;
+                    paddle = (canvas.width - paddleWidth)/2;
+                    //inProcess = true;
+                }
+            }
+        }
+        if(rightPressed && paddle < canvas.width - paddleWidth) {
+            paddle = paddle + 7;
+        } else if(leftPressed && paddle > 0) {
+            paddle = paddle - 7;
+        }
+
+        x = x + velx;
+        y = y + vely;
+    }
     requestAnimationFrame(move);
 }
 
 move();
-
-    
