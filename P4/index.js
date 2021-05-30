@@ -115,7 +115,7 @@ grey.onclick = () => {
     g = data[i+1];
     b = data[i+2];
     shine = (3 * r + 4 * g + b)/8;
-    data[i] = data[i+1] = data[i+1] = shine;
+    data[i] = data[i+1] = data[i+2] = shine;
   }
   console.log('Umbral de gris obtenido');
   ctx.putImageData(imgData, 0, 0);
