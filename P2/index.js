@@ -9,8 +9,6 @@ delete_lastnumber = document.getElementById("delete")
 point = document.getElementById("point")
 sqrt = document.getElementById("sqrt")
 
-
-
 //-- Variables con varios arrays de elementos de una clase.
 let digits = document.getElementsByClassName('digit');
 let operations = document.getElementsByClassName('operation');
