@@ -12,14 +12,15 @@ const ctx = canvas.getContext("2d");
 //-- Variables
 var ballSize = 10;
 var paddleHeight = 12;
-var paddleWidth = 65;
+var paddleWidth = 70;
 var paddle = (canvas.width - paddleWidth)/2;
 var rightPressed = false;
 var leftPressed = false;
+    // Estado del juego
 var inProcess = false;
 
 const BRICK = {
-    rows: 7,
+    rows: 7, 
     columns: 9,
     width: 50,
     height: 20,
@@ -32,15 +33,23 @@ const BRICK = {
 let x = canvas.width/2;
 let y = canvas.height-190;
 let velx = 4;
-let vely = 2;
+let vely = 3;
 let scores = 0;
-let lifes = 5;
+let lifes = 3;
+
+//-- Sonidos
+const playing = new Audio("playing.mp3");
+const point = new Audio("punto.mp3");
+const touch = new Audio("rebote.mp3");
+const gameover = new Audio("gameover.mp3");
+const fail = new Audio("fallo.mp3");
+const win = new Audio("victoria.mp3");
 
 //-- Dibujo pelota
 function drawBall() {
     ctx.beginPath();
         ctx.arc(x, y, ballSize, 0, Math.PI*2);
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = '#F5CBA7';
         ctx.fill();
     ctx.closePath();
 }
@@ -49,7 +58,7 @@ function drawBall() {
 function drawPaddle() {
     ctx.beginPath();
         ctx.rect(paddle, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-        ctx.fillStyle = 'black';
+        ctx.fillStyle = 'white';
         ctx.fill();
     ctx.closePath();
     booleanPaddle();
@@ -92,13 +101,12 @@ for (i=0; i<BRICK.columns; i++) {
 
 //-- Dibujo ladrillos
 function drawBricks() {
-    collisions();
     for(i=0; i<BRICK.columns; i++) {
         for(j=0; j<BRICK.rows; j++) {
             if(bricks[i][j].visible){
               ctx.beginPath();
-                ctx.rect(bricks[i][j].x, bricks[i][j].y, BRICK.width, BRICK.height);              // Estilo del ladrillo
-                ctx.fillStyle = '#851B03';
+                ctx.rect(bricks[i][j].x, bricks[i][j].y, BRICK.width, BRICK.height);
+                ctx.fillStyle = '#D7BDE2';
                 ctx.fill();
             ctx.closePath();  
             }       
@@ -115,7 +123,14 @@ function collisions() {
                 if(x > l.x && x < l.x + BRICK.width && y > l.y && y < l.y + BRICK.height) {
                     vely = -vely;
                     l.visible = false;
+                    point.play();
                     scores += 1;
+                    console.log(scores);
+                    if (scores == 63) {
+                        win.play();
+                        alert('YOU WON THE GAME! CONGRATULATIONS!');
+                        document.location.reload();
+                    }
                 }
             }
         }
@@ -125,9 +140,9 @@ function collisions() {
 //-- Mostrar puntuación y vidas
 function drawPoints() {
     ctx.font = "25px Fantasy";
-    ctx.filltyle = 'black';
-    ctx.fillText("Puntuación: " + scores, 10, 40);
-    ctx.fillText("Vidas: " + lifes, 430, 40);
+    ctx.filltyle = 'white';
+    ctx.fillText("Scores: " + scores, 20, 40);
+    ctx.fillText("Lifes: " + lifes, 450, 40);
 }
 
 //-- Movimientos del juego
@@ -138,30 +153,33 @@ function move() {
     drawBall();
     drawPaddle();
     drawPoints();
+    collisions();
 
     if (inProcess) {
+        setInterval(playing.play(), 500);
         if (x < ballSize || x >= (canvas.width - ballSize)) {
             velx = -velx;
         }
         if (y <= ballSize) {
-            vely = -vely
+            vely = -vely;
         } else if (y > (canvas.height - ballSize)) {
             if (x > paddle && x < paddle + paddleWidth) {
                 vely = -vely;   // En caso de rebotar en la raqueta
+                touch.play();
             } else {            // En caso de tocar el suelo
+                fail.play();
                 lifes = lifes - 1;
-                console.log(lifes);
-                inProcess = false;
                 if (lifes <= 0) {
-                    alert("GAME OVER");
+                    gameover.play();
+                    alert("GAME OVER!");
                     document.location.reload();
                 } else {
+                    inProcess = false;
                     x = canvas.width/2;
                     y = canvas.height-190;
                     velx = 4;
                     vely = 2;
                     paddle = (canvas.width - paddleWidth)/2;
-                    //inProcess = true;
                 }
             }
         }
